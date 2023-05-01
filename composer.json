@@ -1,0 +1,40 @@
+{
+    "name": "my/my-php-framework",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php-di/php-di": "^7.0",
+        "illuminate/database": "^9.50",
+        "vlucas/phpdotenv": "^5.5",
+        "illuminate/validation": "^9.51",
+        "symfony/http-foundation": "^6.2",
+        "phpmd/phpmd": "^2.13",
+        "twig/twig": "^3.5",
+        "symfony/routing": "^6.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "^1.9",
+        "mockery/mockery": "^1.5"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1.9"
+        }
+    },
+    "scripts": {
+        "fixer": "vendor/bin/php-cs-fixer fix",
+        "stan": "vendor/bin/phpstan analyse -l max src tests public",
+        "md": "vendor/bin/phpmd src,public,bootstrap json phpmd.xml",
+        "unit": "php vendor/phpunit/phpunit/phpunit",
+        "inspect": [
+            "composer fixer",
+            "composer stan",
+            "composer md"
+        ]
+    }
+}
